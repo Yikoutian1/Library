@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Mapper.UserMapper">
+    <select id="list" resultType="com.entity.User">
+        select * from user
+    </select>
+    <!--使用动态sql模糊查询-->
+    <select id="listByCondition" resultType="com.entity.User">
+        select * from user
+        <where>
+            <!--当name phone不为空的时候进行拼接concat-->
+            <if test="name != null and name != ''">
+                name like concat('%',#{ name },'%')
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone like concat('%',#{ phone },'%')
+            </if>
+        </where>
+    </select>
+</mapper>

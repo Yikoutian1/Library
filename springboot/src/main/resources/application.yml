@@ -1,0 +1,19 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/library?useUnicode=true&characterEncoding=UTF-8&useSSL=false&severTimezone=GMT%2b8
+    username: root
+    password: 1qiulihang
+#寻找Spring配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  #日志设置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#日志
+logging:
+  lever: debug
