@@ -1,7 +1,9 @@
-package com.controller.request;
+package com.controller;
 
 import com.common.Result;
 import com.controller.dto.LoginDTO;
+import com.controller.request.AdminPageRequest;
+import com.controller.request.LoginRequest;
 import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
 import com.service.IAdminService;
@@ -68,7 +70,7 @@ public class AdminController {
         return Result.success();
     }
     /**
-     * 查询list 通过ID
+     * select list by ID
      * @return
      */
     @GetMapping("/{id}")
@@ -77,7 +79,7 @@ public class AdminController {
         return Result.success(obj);
     }
     /**
-     * 查询所有list
+     * select all list
      * @return
      */
     @GetMapping("/list")

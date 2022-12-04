@@ -22,7 +22,7 @@ public interface AdminMapper {
      * @return
      */
     List<Admin> list();
-    // 多态
+    /**多态**/
     List<Admin> listByCondition(BaseRequest userPageRequest);
 
     void save(Admin admin);

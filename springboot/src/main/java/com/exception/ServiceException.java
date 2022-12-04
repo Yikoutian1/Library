@@ -2,7 +2,7 @@ package com.exception;
 
 /**
  * @ClassName ServiceException
- * @Description TODO
+ * @Description 业务层异常处理
  * @Author QiuLiHang
  * @DATE 2022/12/4 19:15
  * @Version 1.0
