@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 仇李航
+ * @author Qiulihang
  */
 @RestController
 @SpringBootApplication

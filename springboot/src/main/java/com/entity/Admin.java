@@ -2,8 +2,6 @@ package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Date;
 
@@ -15,14 +13,12 @@ import java.util.Date;
  * @Version 1.0
  */
 @Data
-public class User {
+public class Admin {
     private Integer id;
-    private String name;
     private String username;
-    private Integer age;
-    private String sex;
     private String phone;
-    private String address;
+    private String email;
+    private String password;
     /**处理数据格式*/
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date createtime;

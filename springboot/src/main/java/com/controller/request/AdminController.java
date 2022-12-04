@@ -1,9 +1,10 @@
-package com.controller;
+package com.controller.request;
 
 import com.common.Result;
-import com.controller.request.UserPageRequest;
-import com.entity.User;
+import com.controller.dto.LoginDTO;
+import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
+import com.service.IAdminService;
 import com.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,28 +20,41 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin")
+public class AdminController {
     @Autowired
-    IUserService userService;
+    IAdminService adminService;
+
+    /**
+     * login
+     * @return
+     * TIPS:这里我去掉了@RequestBody就不会出现400问题(@RequestBody LoginRequest request)->(LoginRequest request)
+     */
+    @PostMapping("/login")
+    public Result login(LoginRequest request){
+        // 对象信息
+        LoginDTO login = adminService.login(request);
+
+        return Result.success(login);
+    }
     /**
      * post请求接口，新增会员
      * JSON转User对象
      */
     @PostMapping("/save")
-    public Result save(@RequestBody User user){
-        userService.save(user);
+    public Result save(@RequestBody Admin obj){
+        adminService.save(obj);
         return Result.success();
     }
 
     /**
      * update by id
-     * @param user
+     * @param obj
      * @return
      */
     @PutMapping("/update")
-    public Result update(@RequestBody User user){
-        userService.update(user);
+    public Result update(@RequestBody Admin obj){
+        adminService.update(obj);
         return Result.success();
     }
 
@@ -50,7 +64,7 @@ public class UserController {
      */
     @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Integer id){
-        userService.deleteById(id);
+        adminService.deleteById(id);
         return Result.success();
     }
     /**
@@ -59,8 +73,8 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
-        PageInfo<User> user = userService.getById(id);
-        return Result.success(user);
+        PageInfo<Admin> obj = adminService.getById(id);
+        return Result.success(obj);
     }
     /**
      * 查询所有list
@@ -68,17 +82,17 @@ public class UserController {
      */
     @GetMapping("/list")
     public Result list() {
-        List<User> users = userService.list();
+        List<Admin> users = adminService.list();
         return Result.success(users);
     }
     /**
      * 分页模糊查询
      */
     @GetMapping("/page")
-    public Result page(UserPageRequest userPageRequest){
+    public Result page(AdminPageRequest adminPageRequest){
         /**
-         * 通过userServices.page返回的对象进行对象返回
+         * 通过adminServices.page返回的对象进行对象返回
          */
-        return Result.success(userService.page(userPageRequest));
+        return Result.success(adminService.page(adminPageRequest));
     }
 }

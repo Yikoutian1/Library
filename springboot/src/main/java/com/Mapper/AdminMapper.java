@@ -1,7 +1,8 @@
 package com.Mapper;
 
 import com.controller.request.BaseRequest;
-import com.entity.User;
+import com.controller.request.LoginRequest;
+import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,21 +16,22 @@ import java.util.List;
  * @Version 1.0
  */
 @Mapper
-public interface UserMapper {
+public interface AdminMapper {
     /**
      * 可以通过注解写sql语句,或者去mybatis的mapper写原生sql
      * @return
      */
-//    @Select("select * from user")
-    List<User> list();
-//    @Select("select * from user where name like concat('%',#{ name },'%') and phone like concat('%',#{ phone },'%')")
-    List<User> listByCondition(BaseRequest userPageRequest);
+    List<Admin> list();
+    // 多态
+    List<Admin> listByCondition(BaseRequest userPageRequest);
 
-    void save(User user);
+    void save(Admin admin);
 
-    PageInfo<User> getById(Integer id);
+    PageInfo<Admin> getById(Integer id);
 
-    void updateById(User user);
+    void updateById(Admin admin);
 
     void deleteById(Integer id);
+
+    Admin getByUsernameAndPassword(LoginRequest request);
 }
