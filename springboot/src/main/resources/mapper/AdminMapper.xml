@@ -14,6 +14,10 @@
         set username =#{username},phone=#{phone},email=#{email},updatetime=#{updatetime}
         where id = #{id}
     </update>
+    <!--update password-->
+    <update id="updatePassword">
+        update admin set password = #{newPass} where username = #{username} and password = #{password}
+    </update>
     <!--delete by id-->
     <delete id="deleteById">
         delete from admin where id = #{id}
@@ -46,6 +50,9 @@
     </select>
     <!--Login-->
     <select id="getByUsernameAndPassword" resultType="com.entity.Admin">
-        select * from admin where username = #{ username } and password = #{password}
+        select * from admin where username = #{ username } and password = #{ password }
+    </select>
+    <select id="getByUsername" resultType="com.entity.Admin">
+        select * from admin where username = #{ username }
     </select>
 </mapper>

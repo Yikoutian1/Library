@@ -33,11 +33,9 @@ public class AdminController {
      * TIPS:这里我去掉了@RequestBody就不会出现400问题(@RequestBody LoginRequest request)->(LoginRequest request)
      */
     @PostMapping("/login")
-    public Result login(LoginRequest request){
-        // 对象信息
-        LoginDTO login = adminService.login(request);
-
-        return Result.success(login);
+    public Result login(@RequestBody LoginRequest loginRequest){
+        adminService.login(loginRequest);
+        return Result.success();
     }
     /**
      * post请求接口，新增会员
@@ -75,7 +73,7 @@ public class AdminController {
      */
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
-        PageInfo<Admin> obj = adminService.getById(id);
+        Admin obj = adminService.getById(id);
         return Result.success(obj);
     }
     /**

@@ -2,9 +2,11 @@ package com.Mapper;
 
 import com.controller.request.BaseRequest;
 import com.controller.request.LoginRequest;
+import com.controller.request.PasswordRequest;
 import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,11 +29,18 @@ public interface AdminMapper {
 
     void save(Admin admin);
 
-    PageInfo<Admin> getById(Integer id);
+    Admin getById(Integer id);
 
     void updateById(Admin admin);
 
     void deleteById(Integer id);
 
+//    Admin getByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+
+    Admin getByUsername(String username);
+
+
     Admin getByUsernameAndPassword(LoginRequest request);
+
+    int updatePassword(PasswordRequest request);
 }

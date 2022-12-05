@@ -3,6 +3,7 @@ package com.service;
 import com.controller.dto.LoginDTO;
 import com.controller.request.BaseRequest;
 import com.controller.request.LoginRequest;
+import com.controller.request.PasswordRequest;
 import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
 
@@ -18,11 +19,13 @@ public interface IAdminService {
      */
     void save(Admin admin);
 
-    PageInfo<Admin> getById(Integer id);
+    Admin getById(Integer id);
 
     void update(Admin admin);
 
     void deleteById(Integer id);
 
     LoginDTO login(LoginRequest request);
+
+    void changePass(PasswordRequest request);
 }
