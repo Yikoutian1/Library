@@ -79,7 +79,8 @@ public class AdminService implements IAdminService {
         if (StrUtil.isBlank(obj.getPassword())) {
             obj.setPassword(DEFAULT_PASS);
         }
-        obj.setPassword(securePass(obj.getPassword()));  // 设置md5加密，加盐
+        // 设置md5加密，加盐
+        obj.setPassword(securePass(obj.getPassword()));
         try {
             adminMapper.save(obj);
         } catch (DuplicateKeyException e) {
@@ -90,7 +91,6 @@ public class AdminService implements IAdminService {
 
     /**
      * by id
-     *
      * @param id
      * @return
      */

@@ -6,9 +6,6 @@
                     :w="310"
                     :h="155"
                     :accuracy="5"
-                    :imgs="['https://cdn.pixabay.com/photo/2022/11/09/12/23/lotus-7580478_960_720.jpg',
-                    'https://cdn.pixabay.com/photo/2017/08/29/12/07/adult-2693054_960_720.jpg',
-                    'https://cdn.pixabay.com/photo/2022/11/16/15/52/mushrooms-7596258_960_720.jpg']"
                     slider-text="向右滑动"
                     @success="onSuccess"
                     @fail="onFail"

@@ -13,7 +13,7 @@ mybatis:
   #日志设置
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+    map-underscore-to-camel-case: true  # 开启数据库字段下划线转驼峰
 #日志
 logging:
   lever: debug

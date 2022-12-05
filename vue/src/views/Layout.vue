@@ -100,7 +100,7 @@ export default {
     logout() {
       // 清除浏览器用户数据
       Cookies.remove('admin')
-      this.$router.push('/login')
+      this.$router.push('/home')
     }
   }
 }
