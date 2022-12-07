@@ -27,9 +27,11 @@ public interface UserMapper {
 
     void save(User user);
 
-    PageInfo<User> getById(Integer id);
+    User getById(Integer id);
 
     void updateById(User user);
 
     void deleteById(Integer id);
+
+    User getByUsername(String userNo);
 }

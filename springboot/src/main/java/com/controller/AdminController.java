@@ -4,6 +4,7 @@ import com.common.Result;
 import com.controller.dto.LoginDTO;
 import com.controller.request.AdminPageRequest;
 import com.controller.request.LoginRequest;
+import com.controller.request.PasswordRequest;
 import com.entity.Admin;
 import com.github.pagehelper.PageInfo;
 import com.service.IAdminService;
@@ -30,7 +31,7 @@ public class AdminController {
     /**
      * login
      * @return
-     * TIPS:这里我去掉了@RequestBody就不会出现400问题(@RequestBody LoginRequest request)->(LoginRequest request)
+     * TIPS:去掉了@RequestBody就不会出现400问题(@RequestBody LoginRequest request)->(LoginRequest request)
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginRequest loginRequest){
@@ -58,6 +59,16 @@ public class AdminController {
         return Result.success();
     }
 
+    /**
+     * 密码
+     * @param request
+     * @return
+     */
+    @PutMapping("/password")
+    public Result password(@RequestBody PasswordRequest request) {
+        adminService.changePass(request);
+        return Result.success();
+    }
     /**
      * delete by id
      * @return

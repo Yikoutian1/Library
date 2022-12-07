@@ -24,4 +24,8 @@ public class Admin {
     private Date createtime;
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date updatetime;
+    /**
+     * 禁用状态
+     */
+    private boolean status;
 }

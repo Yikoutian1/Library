@@ -70,7 +70,7 @@ public class UserService implements IUserService {
      * @return
      */
     @Override
-    public PageInfo<User> getById(Integer id) {
+    public User getById(Integer id) {
         return userMapper.getById(id);
     }
 
@@ -92,6 +92,18 @@ public class UserService implements IUserService {
     @Override
     public void deleteById(Integer id) {
         userMapper.deleteById(id);
+    }
+
+    @Override
+    public void handleAccount(User user) {
+        Integer score = user.getScore();
+        if (score == null) {
+            return;
+        }
+        Integer id = user.getId();
+        User dbUser = userMapper.getById(id);
+        dbUser.setAccount(dbUser.getAccount() + score);
+        userMapper.updateById(dbUser);
     }
 
 }

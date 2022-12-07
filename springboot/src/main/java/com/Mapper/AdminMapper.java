@@ -35,12 +35,12 @@ public interface AdminMapper {
 
     void deleteById(Integer id);
 
-//    Admin getByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+    Admin getByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     Admin getByUsername(String username);
 
 
-    Admin getByUsernameAndPassword(LoginRequest request);
+//    Admin getByUsernameAndPassword(LoginRequest request);
 
     int updatePassword(PasswordRequest request);
 }

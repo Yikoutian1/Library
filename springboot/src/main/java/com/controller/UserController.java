@@ -3,7 +3,6 @@ package com.controller;
 import com.common.Result;
 import com.controller.request.UserPageRequest;
 import com.entity.User;
-import com.github.pagehelper.PageInfo;
 import com.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +58,7 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
-        PageInfo<User> user = userService.getById(id);
+        User user = userService.getById(id);
         return Result.success(user);
     }
     /**
@@ -80,5 +79,16 @@ public class UserController {
          * 通过userServices.page返回的对象进行对象返回
          */
         return Result.success(userService.page(userPageRequest));
+    }
+
+    /**
+     * account
+     * @param user
+     * @return
+     */
+    @PostMapping("/account")
+    public Result account(@RequestBody User user) {
+        userService.handleAccount(user);
+        return Result.success();
     }
 }

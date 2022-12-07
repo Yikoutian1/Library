@@ -37,7 +37,8 @@ public class AdminService implements IAdminService {
     AdminMapper adminMapper;
 
     private static final String DEFAULT_PASS = "123";
-    private static final String PASS_SALT = "qiulihang";
+    private static final String PASS_SALT = "qingge";
+
     @Override
     public List<Admin> list() {
         /**
@@ -70,11 +71,11 @@ public class AdminService implements IAdminService {
      */
     @Override
     public void save(Admin obj) {
-//        Date date = new Date();
+        //Date date = new Date();
         // 转卡号处理,通过 hutol工具
         // IdUtil.fastSimpleUUID():英文+数字 hashCode()转数字,再abs
-//        obj.setUsername(DateUtil.format(date, "yyyyMMdd") + Math.abs(IdUtil.fastSimpleUUID().hashCode()));
-//        adminMapper.save(obj);
+        //obj.setUsername(DateUtil.format(date, "yyyyMMdd") + Math.abs(IdUtil.fastSimpleUUID().hashCode()));
+        //adminMapper.save(obj);
         // 默认密码 123
         if (StrUtil.isBlank(obj.getPassword())) {
             obj.setPassword(DEFAULT_PASS);
@@ -91,6 +92,7 @@ public class AdminService implements IAdminService {
 
     /**
      * by id
+     *
      * @param id
      * @return
      */
@@ -128,9 +130,31 @@ public class AdminService implements IAdminService {
      */
     @Override
     public LoginDTO login(LoginRequest request) {
-        Admin admin = adminMapper.getByUsernameAndPassword(request);
+        Admin admin = null;
+        try {
+            admin = adminMapper.getByUsername(request.getUsername());
+        } catch (Exception e) {
+            log.error("根据用户名{} 查询出错", request.getUsername());
+            throw new ServiceException("用户名错误");
+        }
+        if (admin == null) {
+            throw new ServiceException("用户名或密码错误");
+        }
+        // 判断密码是否合法
+        String securePass = securePass(request.getPassword());
+        if (!securePass.equals(admin.getPassword())) {
+            System.out.println(securePass.equals(admin.getPassword()));
+            throw new ServiceException("用户名或密码错误");
+        }
+        if (!admin.isStatus()) {
+            throw new ServiceException("当前用户处于禁用状态，请联系管理员");
+        }
         LoginDTO loginDTO = new LoginDTO();
-        BeanUtils.copyProperties(admin,loginDTO);
+        BeanUtils.copyProperties(admin, loginDTO);
+
+        // 生成token       -- copy --
+        String token = TokenUtils.genToken(String.valueOf(admin.getId()), admin.getPassword());
+        loginDTO.setToken(token);
         return loginDTO;
     }
 
@@ -143,6 +167,7 @@ public class AdminService implements IAdminService {
             throw new ServiceException("修改密码失败");
         }
     }
+
     private String securePass(String password) {
         return SecureUtil.md5(password + PASS_SALT);
     }

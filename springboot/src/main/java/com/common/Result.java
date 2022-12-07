@@ -44,6 +44,12 @@ public class Result {
      * error
      * @return
      */
+    public static Result error(String msg) {
+        Result result = new Result();
+        result.setCode(ERROR_CODE);
+        result.setMsg(msg);
+        return result;
+    }
     public static Result error(String msg, String message){
         Result result = new Result();
         result.setCode(ERROR_CODE);

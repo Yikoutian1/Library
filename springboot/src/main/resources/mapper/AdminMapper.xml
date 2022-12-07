@@ -5,30 +5,30 @@
 <mapper namespace="com.Mapper.AdminMapper">
     <!--save-->
     <insert id="save">
-        insert into admin(username,password,phone,mail)
+        insert into library.admin(username,password,phone,mail)
         values (#{ username },#{ password },#{ phone },#{email})
     </insert>
     <!--update-->
     <update id="updateById">
-        update admin
+        update library.admin
         set username =#{username},phone=#{phone},email=#{email},updatetime=#{updatetime}
         where id = #{id}
     </update>
     <!--update password-->
     <update id="updatePassword">
-        update admin set password = #{newPass} where username = #{username} and password = #{password}
+        update library.admin set password = #{newPass} where username = #{username} and password = #{password}
     </update>
     <!--delete by id-->
     <delete id="deleteById">
-        delete from admin where id = #{id}
+        delete from library.admin where id = #{id}
     </delete>
     <!--all admin-->
     <select id="list" resultType="com.entity.Admin">
-        select * from admin order by desc
+        select * from library.admin order by desc
     </select>
     <!--使用动态sql模糊查询-->
     <select id="listByCondition" resultType="com.entity.Admin">
-        select * from admin
+        select * from library.admin
         <where>
             <!--当username email phone不为空的时候进行拼接concat-->
             <if test="username != null and username != ''">
@@ -46,13 +46,13 @@
     </select>
     <!--通过ID查询用户-->
     <select id="getById" resultType="com.entity.Admin">
-        select * from admin where id = #{ id }
+        select * from library.admin where id = #{ id }
     </select>
     <!--Login-->
     <select id="getByUsernameAndPassword" resultType="com.entity.Admin">
-        select * from admin where username = #{ username } and password = #{ password }
+        select * from library.admin where username = #{username} and password = #{password}
     </select>
     <select id="getByUsername" resultType="com.entity.Admin">
-        select * from admin where username = #{ username }
+        select * from library.admin where username = #{ username }
     </select>
 </mapper>
