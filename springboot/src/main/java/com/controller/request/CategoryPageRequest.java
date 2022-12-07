@@ -10,5 +10,6 @@ import lombok.Data;
  */
 @Data
 public class CategoryPageRequest extends BaseRequest{
+    /**name*/
     private String name;
 }

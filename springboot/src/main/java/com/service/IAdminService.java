@@ -19,6 +19,11 @@ public interface IAdminService {
      */
     void save(Admin admin);
 
+    /**
+     * by id
+     * @param id
+     * @return
+     */
     Admin getById(Integer id);
 
     void update(Admin admin);

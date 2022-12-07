@@ -6,9 +6,7 @@ import com.controller.request.AdminPageRequest;
 import com.controller.request.LoginRequest;
 import com.controller.request.PasswordRequest;
 import com.entity.Admin;
-import com.github.pagehelper.PageInfo;
 import com.service.IAdminService;
-import com.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,8 +33,8 @@ public class AdminController {
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginRequest loginRequest){
-        adminService.login(loginRequest);
-        return Result.success();
+        LoginDTO loginDTO = adminService.login(loginRequest);
+        return Result.success(loginDTO);
     }
     /**
      * post请求接口，新增会员

@@ -11,10 +11,10 @@ import lombok.Data;
  */
 @Data
 public class AdminPageRequest extends BaseRequest{
-    // 搜索名称
+    /**搜索名称*/
     private String username;
-    // 搜索号码
+    /**搜索号码*/
     private String phone;
-    // email
+    /**email*/
     private String email;
 }

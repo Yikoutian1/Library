@@ -10,10 +10,10 @@ import lombok.Data;
  */
 @Data
 public class BorrowPageRequest extends BaseRequest{
-    // 借的书名
+    /**借的书名*/
     private String bookName;
-    // 书是否被借
+    /**书是否被借*/
     private String bookNo;
-    // 借的人
+    /**借的人*/
     private String userName;
 }

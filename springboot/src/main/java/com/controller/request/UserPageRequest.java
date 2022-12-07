@@ -11,8 +11,8 @@ import lombok.Data;
  */
 @Data
 public class UserPageRequest extends BaseRequest{
-    // 搜索名称
+    /**搜索名称*/
     private String name;
-    // 搜索号码
+    /**搜索号码*/
     private String phone;
 }

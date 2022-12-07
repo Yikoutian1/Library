@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Mapper.UserMapper">
     <!--save-->
     <insert id="save">
-        insert into user(name,username,age,sex,phone,address)
-        values (#{ name },#{ username },#{ age },#{ sex },#{ phone },#{ address })
+        insert into user(name, username, age, sex, phone, address)
+        values (#{ name }, #{ username }, #{ age }, #{ sex }, #{ phone }, #{ address })
     </insert>
     <!--update-->
     <update id="updateById">
         update user
-        set name =#{name},age = #{age},sex=#{sex},phone=#{phone},address=#{address},updatetime=#{updatetime}
+        set name      =#{name},
+            age       = #{age},
+            sex=#{sex},
+            phone=#{phone},
+            address=#{address},
+            updatetime=#{updatetime}
         where id = #{id}
     </update>
     <!--delete by id-->
     <delete id="deleteById">
-        delete from user where id = #{id}
+        delete
+        from user
+        where id = #{id}
     </delete>
     <!--all user-->
     <select id="list" resultType="com.entity.User">
-        select * from user
+        select *
+        from user
     </select>
     <!--使用动态sql模糊查询-->
     <select id="listByCondition" resultType="com.entity.User">
@@ -39,9 +47,13 @@
     </select>
     <!--通过ID查询用户-->
     <select id="getById" resultType="com.entity.User">
-        select * from user where id = #{ id }
+        select *
+        from user
+        where id = #{ id }
     </select>
     <select id="getByUsername" resultType="com.entity.User">
-        select * from user where Username = #{ username }
+        select *
+        from user
+        where Username = #{ username }
     </select>
 </mapper>
