@@ -34,7 +34,7 @@
     <!--all admin-->
     <select id="list" resultType="com.entity.Admin">
         select *
-        from library.admin
+        from admin
         order by desc
     </select>
     <!--使用动态sql模糊查询-->

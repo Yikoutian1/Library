@@ -37,6 +37,7 @@ public interface AdminMapper {
 
 
     //Admin getByUsernameAndPassword(LoginRequest request);
+
     Admin getByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     Admin getByUsername(String username);

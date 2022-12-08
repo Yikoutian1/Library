@@ -5,18 +5,20 @@
 <mapper namespace="com.Mapper.UserMapper">
     <!--save-->
     <insert id="save">
-        insert into user(name, username, age, sex, phone, address)
-        values (#{ name }, #{ username }, #{ age }, #{ sex }, #{ phone }, #{ address })
+        insert into user(name, username, age, sex, phone, address, account)
+        values(#{name}, #{username}, #{age}, #{sex}, #{phone}, #{address}, #{account})
     </insert>
     <!--update-->
     <update id="updateById">
         update user
-        set name      =#{name},
-            age       = #{age},
-            sex=#{sex},
-            phone=#{phone},
-            address=#{address},
-            updatetime=#{updatetime}
+        set name       = #{name},
+            age        = #{age},
+            sex        = #{sex},
+            phone      = #{phone},
+            address    = #{address},
+            account    = #{account},
+            status     = #{status},
+            updatetime = #{updatetime}
         where id = #{id}
     </update>
     <!--delete by id-->
@@ -54,6 +56,6 @@
     <select id="getByUsername" resultType="com.entity.User">
         select *
         from user
-        where Username = #{ username }
+        where username = #{ username }
     </select>
 </mapper>

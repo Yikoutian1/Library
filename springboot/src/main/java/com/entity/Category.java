@@ -6,6 +6,9 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Qiulihang
+ */
 @Data
 public class Category {
     private Integer id;

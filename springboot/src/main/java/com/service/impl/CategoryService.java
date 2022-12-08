@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.ICategoryService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public PageInfo<Category> page(BaseRequest baseRequest) {
+        // 分页
         PageHelper.startPage(baseRequest.getPageNum(), baseRequest.getPageSize());
         // 自关联查询
         List<Category> categories = categoryMapper.listByCondition(baseRequest);
@@ -55,5 +57,4 @@ public class CategoryService implements ICategoryService {
     public void deleteById(Integer id) {
         categoryMapper.deleteById(id);
     }
-
 }

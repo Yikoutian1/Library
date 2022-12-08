@@ -37,7 +37,7 @@ public class AdminService implements IAdminService {
     AdminMapper adminMapper;
 
     private static final String DEFAULT_PASS = "123";
-    private static final String PASS_SALT = "qingge";
+    private static final String PASS_SALT = "Qiulihang";
 
     @Override
     public List<Admin> list() {
@@ -89,7 +89,6 @@ public class AdminService implements IAdminService {
             throw new ServiceException("用户名重复");
         }
     }
-
     /**
      * by id
      * @param id
@@ -99,7 +98,6 @@ public class AdminService implements IAdminService {
     public Admin getById(Integer id) {
         return adminMapper.getById(id);
     }
-
     /**
      * update by id
      * 以及附带修改时间
