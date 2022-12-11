@@ -3,6 +3,7 @@ package com.Mapper;
 import com.controller.request.BaseRequest;
 import com.entity.Book;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 
 import java.util.List;
@@ -22,8 +23,8 @@ public interface BookMapper {
 
     void deleteById(Integer id);
 
-    Book getByNo(String bookNo);
+    Book getByNo(@Param("bookNo")String bookNo);
 
-    void updateNumByNo(String bookNo);
+    void updateNumByNo(@Param("bookNo")String bookNo);
 
 }

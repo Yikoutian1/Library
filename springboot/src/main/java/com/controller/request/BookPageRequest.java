@@ -14,9 +14,10 @@ public class BookPageRequest extends BaseRequest{
     /**
      * 书是否被借
      */
-    private String booKno;
+    private String bookNo;
     /**
      * 书名
      */
     private String name;
+
 }

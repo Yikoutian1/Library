@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class Book extends com.entity.BaseEntity implements Serializable {
+public class Book extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +54,7 @@ public class Book extends com.entity.BaseEntity implements Serializable {
     private List<String> categories;
     private Integer score;
     private Integer nums;
+
 
 
 }

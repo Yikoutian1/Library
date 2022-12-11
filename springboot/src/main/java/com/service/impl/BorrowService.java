@@ -35,7 +35,7 @@ import java.util.*;
 @SuppressWarnings({"all"})
 public class BorrowService implements IBorrowService {
 
-    @Resource
+    @Autowired
     BorrowMapper borrowMapper;
 
     @Autowired

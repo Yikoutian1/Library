@@ -19,7 +19,8 @@ import java.util.List;
 @Slf4j
 public class CategoryService implements ICategoryService {
 
-    @Resource
+    //@Resource
+    @Autowired
     CategoryMapper categoryMapper;
 
 

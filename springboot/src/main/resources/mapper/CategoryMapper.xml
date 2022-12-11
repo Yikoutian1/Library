@@ -15,8 +15,7 @@
                     column="{id=id, name1=queryName}" select="selectByPid"/>
     </resultMap>
 
-    <!--    { name1=queryName }  前面的name1是子集待使用的参数名称， queryName是父级传给子集的属性，queryName必须是父级的一个查询属性，
-        也就是把 queryName赋值给了name1，然后使用 -->
+    <!--{ name1=queryName }  前面的name1是子集待使用的参数名称， queryName是父级传给子集的属性，queryName必须是父级的一个查询属性，也就是把 queryName赋值给了name1，然后使用 -->
 
     <select id="selectByPid" resultType="com.entity.Category">
         select * from category where pid = #{id}
