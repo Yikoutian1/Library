@@ -10,6 +10,8 @@ import lombok.Data;
  */
 @Data
 public class CategoryPageRequest extends BaseRequest{
-    /**name*/
+    /**
+     * 分类name
+     */
     private String name;
 }
