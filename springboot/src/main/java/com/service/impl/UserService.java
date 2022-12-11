@@ -102,7 +102,11 @@ public class UserService implements IUserService {
         }
         Integer id = user.getId();
         User dbUser = userMapper.getById(id);
-        dbUser.setAccount(dbUser.getAccount() + score);
+        Integer temp = dbUser.getAccount() + score;
+        System.out.println("****************************");
+        System.out.println(temp);
+        System.out.println("****************************");
+        dbUser.setAccount(temp);
         userMapper.updateById(dbUser);
     }
 
