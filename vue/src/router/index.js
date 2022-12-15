@@ -70,6 +70,12 @@ const routes = [
       { path: 'editBorrow', name: 'EditBorrow', component: () => import('@/views/borrow/Edit.vue') },
       //  ====  Return  ====
       { path: 'returList', name: 'returList', component: () => import('@/views/retur/List.vue') },
+      //  ====  Game  ====
+      {
+        path: 'game',
+        name: 'game',
+        component: () => import('@/views/game/game.vue')
+      }
     ]
   },
   {
