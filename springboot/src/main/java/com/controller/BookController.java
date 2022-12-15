@@ -79,18 +79,33 @@ public class BookController {
         }
     }
 
+    /**
+     * save
+     * @param obj
+     * @return
+     */
     @PostMapping("/save")
     public Result save(@RequestBody Book obj) {
         bookService.save(obj);
         return Result.success();
     }
 
+    /**
+     * update
+     * @param obj
+     * @return
+     */
     @PutMapping("/update")
     public Result update(@RequestBody Book obj) {
         bookService.update(obj);
         return Result.success();
     }
 
+    /**
+     * delete
+     * @param id
+     * @return
+     */
     @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Integer id) {
         bookService.deleteById(id);
