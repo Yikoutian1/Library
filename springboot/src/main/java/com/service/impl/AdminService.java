@@ -167,6 +167,7 @@ public class AdminService implements IAdminService {
 
     private String securePass(String password) {
         return SecureUtil.md5(password + PASS_SALT);
+//        return password;
     }
 
 }
